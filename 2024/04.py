@@ -18,11 +18,11 @@ class Solution(BaseSolution):
                         sum += 1
                     if x < (lineLength - 3):
                         word = input[y][x] + input[y + 1][x + 1] + input[y + 2][x + 2] + input[y + 3][x + 3]
-                        if word == searchedWords[0] or word == searchedWords[1]:
+                        if word in searchedWords:
                             sum += 1
                 if x >= 3 and y < (len(input) - 3):
                     word = input[y][x] + input[y + 1][x - 1] + input[y + 2][x - 2] + input[y + 3][x - 3]
-                    if word == searchedWords[0] or word == searchedWords[1]:
+                    if word in searchedWords:
                             sum += 1
 
         return sum
@@ -34,10 +34,6 @@ class Solution(BaseSolution):
         sum: int = 0
         for y in range(1, len(input) - 1):
             for x in range(1, lineLength - 1):
-                # wordh = input[y][x - 1 : x + 2]
-                # wordv = input[y - 1][x] + input[y][x] + input[y + 1][x]
-                # if (wordh in searchedWords) and (wordv in searchedWords):
-                #     sum += 1
                 wordrd = input[y - 1][x - 1] + input[y][x] + input[y + 1][x + 1]
                 wordld = input[y - 1][x + 1] + input[y][x] + input[y + 1][x - 1]
                 if (wordrd in searchedWords) and (wordld in searchedWords):
