@@ -28,15 +28,7 @@ class Solution(BaseSolution):
         return data
     
     def part_one(self) -> int:
-        lines = self.parse()
-        totalSum: int = 0
-        for line in lines:
-            totalSum += has_solution(line, [add, mul])
-        return totalSum
+        return sum(has_solution(line, [add, mul]) for line in self.parse())
 
     def part_two(self) -> int:
-        lines = self.parse()
-        totalSum: int = 0
-        for lineNum, line in enumerate(lines):
-            totalSum += has_solution(line, [add, mul, cat])
-        return totalSum
+        return sum(has_solution(line, [add, mul, cat]) for line in self.parse())
