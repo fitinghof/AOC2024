@@ -84,22 +84,20 @@ def main():
         print(f"[ERR] Could not open puzzle input [{input_path} or {example_input_path} or both]")
 
     if len(example_input) == 0:
-        print("No example input")
+        print("WARNING No example input")
     if len(input) == 0:
-        print("No input")
-
-    if len(input) <= 20:
-        print("[WRN] Puzzle input is very small")
+        print("WARNING No input")
 
     solution: BaseSolution = module.Solution(input, example_input)
+
     ex_aswer = solution.part_one(solution.parse(example_input))
-    if solution.part1_ex_answer() == ex_aswer:
+    if solution.part1_ex_answer() == ex_aswer or len(example_input) == 0:
         print("Part 1:", solution.part_one(solution.parse(input)))
     else:
         print(f"Part 1: Failed to get correct output using example input, you got {ex_aswer}, correct: {solution.part1_ex_answer()}")
 
     ex_aswer = solution.part_two(solution.parse(example_input))
-    if solution.part2_ex_answer() == ex_aswer:
+    if solution.part2_ex_answer() == ex_aswer or len(example_input) == 0:
         print("Part 2:", solution.part_two(solution.parse(input)))
     else:
         print(f"Part 2: Failed to get correct output using example input, you got {ex_aswer}, correct: {solution.part2_ex_answer()}")

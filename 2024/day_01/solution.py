@@ -2,29 +2,30 @@ from advent import BaseSolution
 
 
 class Solution(BaseSolution):
+    def parse(self, input: str):
+        outPut = []
+        for i in input.splitlines():
+            outPut.append([int(j) for j in i.split()])
+        return outPut
+
     def part_one(self, input) -> int:
-        sum: int = 0
         leftList: list = []
         rightList: list = []
-        for line in input.splitlines():
-            nums = line.split()
-            leftList.append(int(nums[0]))
-            rightList.append(int(nums[1]))
+        for line in input:
+            leftList.append(line[0])
+            rightList.append(line[1])
         leftList.sort()
         rightList.sort()
 
-        for left, right in zip(leftList, rightList):
-            sum += abs(left - right)
-        return sum
+        return sum(abs(left - right) for left, right in zip(leftList, rightList))
 
     def part_two(self, input) -> int:
         sum: int = 0
         leftList: list = []
         rightDict: dict = {}
-        for line in input.splitlines():
-            nums = line.split()
-            left = int(nums[0])
-            right = int(nums[1])
+        for line in input:
+            left = line[0]
+            right = line[1]
             leftList.append(left)
             if right in rightDict:
                 rightDict[right] += 1
