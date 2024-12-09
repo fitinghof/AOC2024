@@ -53,7 +53,7 @@ def main():
     example_input_path = day_path / "example_input.txt"
 
     if not day_path.exists():
-        day_path.mkdir()
+        day_path.mkdir(parents=True, exist_ok=True)
 
     if not solution_path.exists():
         with open(solution_path, "x") as f, open("./template.py", "r") as g:
