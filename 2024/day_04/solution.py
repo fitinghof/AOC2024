@@ -2,9 +2,12 @@ from advent import BaseSolution
 
 
 class Solution(BaseSolution):
-    def part_one(self) -> int:
+    def part1_ex_answer(self) -> int:
+        return 18
+
+    def part_one(self, input) -> int:
+        input = input.splitlines()
         searchedWords = "XMAS", "SAMX"
-        input = self.input.splitlines()
         lineLength = len(input[0])
         sum: int = 0
         for y in range(len(input)):
@@ -27,9 +30,12 @@ class Solution(BaseSolution):
 
         return sum
 
-    def part_two(self) -> int:
+    def part2_ex_answer(self) -> int:
+        return 9
+
+    def part_two(self, input) -> int:
+        input = input.splitlines()
         searchedWords = "MAS", "SAM"
-        input = self.input.splitlines()
         lineLength = len(input[0])
         sum: int = 0
         for y in range(1, len(input) - 1):
@@ -39,3 +45,4 @@ class Solution(BaseSolution):
                 if (wordrd in searchedWords) and (wordld in searchedWords):
                     sum += 1
         return sum
+

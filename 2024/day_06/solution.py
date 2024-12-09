@@ -19,8 +19,11 @@ def has_loop(map, startpos):
     return False
 
 class Solution(BaseSolution):
-    def part_one(self) -> int:
-        map = [list(i) for i in self.input.splitlines()]
+    def part1_ex_answer(self) -> int:
+        return 41
+
+    def part_one(self, input) -> int:
+        map = [list(i) for i in input.splitlines()]
         pos = [0, 0]
         mapHeight = len(map)
         mapWidth = len(map[0])
@@ -42,8 +45,11 @@ class Solution(BaseSolution):
             sum += line.count("X")
         return sum
 
-    def part_two(self) -> int:
-        map = [list(i) for i in self.input.splitlines()]
+    def part2_ex_answer(self) -> int:
+        return 6
+
+    def part_two(self, input) -> int:
+        map = [list(i) for i in input.splitlines()]
         startpos = [0, 0]
         mapHeight = len(map)
         mapWidth = len(map[0])
@@ -51,8 +57,8 @@ class Solution(BaseSolution):
             if "^" in map[i]:
                 startpos = [i, map[i].index("^")]
                 break
-        
-        
+
+
         pos = startpos.copy()
         dirIndex = 0
         dirs = (-1, 0), (0, 1), (1, 0), (0, -1)

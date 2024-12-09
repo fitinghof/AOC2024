@@ -2,11 +2,11 @@ from advent import BaseSolution
 
 
 class Solution(BaseSolution):
-    def part_one(self) -> int:
+    def part_one(self, input) -> int:
         sum: int = 0
         leftList: list = []
         rightList: list = []
-        for line in self.input.splitlines():
+        for line in input.splitlines():
             nums = line.split()
             leftList.append(int(nums[0]))
             rightList.append(int(nums[1]))
@@ -17,11 +17,11 @@ class Solution(BaseSolution):
             sum += abs(left - right)
         return sum
 
-    def part_two(self) -> int:
+    def part_two(self, input) -> int:
         sum: int = 0
         leftList: list = []
         rightDict: dict = {}
-        for line in self.input.splitlines():
+        for line in input.splitlines():
             nums = line.split()
             left = int(nums[0])
             right = int(nums[1])

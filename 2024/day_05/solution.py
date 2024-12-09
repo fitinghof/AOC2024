@@ -4,8 +4,8 @@ from functools import cmp_to_key
 
 
 class Solution(BaseSolution):
-    def part_one(self) -> int:
-        lines = self.input.splitlines()
+    def part_one(self, input) -> int:
+        lines = input.splitlines()
         index = 0
         orderMap = defaultdict(list)
         for index in range(len(lines)):
@@ -33,8 +33,8 @@ class Solution(BaseSolution):
 
         return sum
 
-    def part_two(self) -> int:
-        lines = self.input.splitlines()
+    def part_two(self, input) -> int:
+        lines = input.splitlines()
         index = 0
         orderMap = defaultdict(list)
         for index in range(len(lines)):

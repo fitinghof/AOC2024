@@ -2,8 +2,7 @@ from advent import BaseSolution
 
 
 class Solution(BaseSolution):
-    def part_one(self) -> int:
-        input = self.input
+    def part_one(self, input) -> int:
         result: int = 0
         mulIndex: int = 0
         while mulIndex < len(input):
@@ -33,8 +32,7 @@ class Solution(BaseSolution):
 
 
 
-    def part_two(self) -> int:
-        input = self.input
+    def part_two(self, input) -> int:
         result: int = 0
         mulIndex: int = 0
         do: bool = True
@@ -51,7 +49,7 @@ class Solution(BaseSolution):
                 elif dontIndex == -1 and doIndex != -1:
                     do = True
                 else: do = doIndex > dontIndex
-            
+
             if mulIndex == -1: return result
             numstr: str = ""
             mulIndex += 4

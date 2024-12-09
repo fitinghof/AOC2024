@@ -3,19 +3,24 @@ from collections import defaultdict
 
 
 class Solution(BaseSolution):
-    def parse(self):
-        return [list(i) for i in self.input.splitlines()]
-
-    def part_one(self) -> int:
+    def parse(self, input: str):
+        #return [list(i) for i in input.splitlines()]
         towers = defaultdict(list)
-        lines = self.parse()
+        lines = [list(i) for i in input.splitlines()]
         height = len(lines)
-        sum = 0
         width = len(lines[0])
         for y in range(height):
             for x in range(width):
                 if lines[y][x] != ".":
                     towers[lines[y][x]].append((y,x))
+        return towers, lines, height, width
+
+    def part1_ex_answer(self) -> int:
+        return 14
+
+    def part_one(self, input) -> int:
+        towers, lines, height, width = input
+        sum = 0
         for freq in towers.values():
             for i in range(len(freq)):
                 for j in range(i + 1,len(freq)):
@@ -39,16 +44,11 @@ class Solution(BaseSolution):
                             sum += 1
         return sum
 
-    def part_two(self) -> int:
-        towers = defaultdict(list)
-        lines = self.parse()
-        height = len(lines)
-        sum = 0
-        width = len(lines[0])
-        for y in range(height):
-            for x in range(width):
-                if lines[y][x] != ".":
-                    towers[lines[y][x]].append((y,x))
+    def part2_ex_answer(self) -> int:
+        return 34
+
+    def part_two(self, input) -> int:
+        towers, lines, height, width = input
         for freq in towers.values():
             for i in range(len(freq)):
                 for j in range(i + 1,len(freq)):
@@ -69,5 +69,6 @@ class Solution(BaseSolution):
                         lines[ypos][xpos] = "#"
                         xpos -= xofset
                         ypos -= yofset
-        for i in lines: sum += i.count("#")
-        return sum
+
+        return sum([i.count("#") for i in lines])
+
