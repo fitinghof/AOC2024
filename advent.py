@@ -66,14 +66,10 @@ def main():
             pass
 
     module_name = f"{year}.day_{day:02}.solution"
-    # module_path = f"./{year}/{day:02}.py"
-    # input_path = f"./{year}/input/{day:02}.dat"
 
-    module: ModuleType
+    module: ModuleType = import_module(module_name)
     input: str = ""
     example_input: str = ""
-
-    module = import_module(module_name)
 
     try:
         with open(input_path, "r") as f:
@@ -90,17 +86,17 @@ def main():
 
     solution: BaseSolution = module.Solution(input, example_input)
 
-    ex_aswer = solution.part_one(solution.parse(example_input))
-    if solution.part1_ex_answer() == ex_aswer or len(example_input) == 0:
+    ex_answer = solution.part_one(solution.parse(example_input))
+    if solution.part1_ex_answer() == ex_answer or len(example_input) == 0:
         print("Part 1:", solution.part_one(solution.parse(input)))
     else:
-        print(f"Part 1: Failed to get correct output using example input, you got {ex_aswer}, correct: {solution.part1_ex_answer()}")
+        print(f"Part 1: Failed to get correct output using example input, you got {ex_answer}, correct: {solution.part1_ex_answer()}")
 
-    ex_aswer = solution.part_two(solution.parse(example_input))
-    if solution.part2_ex_answer() == ex_aswer or len(example_input) == 0:
+    ex_answer = solution.part_two(solution.parse(example_input))
+    if solution.part2_ex_answer() == ex_answer or len(example_input) == 0:
         print("Part 2:", solution.part_two(solution.parse(input)))
     else:
-        print(f"Part 2: Failed to get correct output using example input, you got {ex_aswer}, correct: {solution.part2_ex_answer()}")
+        print(f"Part 2: Failed to get correct output using example input, you got {ex_answer}, correct: {solution.part2_ex_answer()}")
 
 if __name__ == "__main__":
     main()
