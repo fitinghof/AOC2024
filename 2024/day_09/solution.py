@@ -15,9 +15,7 @@ class Solution(BaseSolution):
             free = not free
         return disk
 
-    def part1_ex_answer(self) -> int:
-        return 1928
-
+    part1_ex_answer = 1928
     def part_one(self, input) -> int:
         disk: list = input
 
@@ -37,9 +35,7 @@ class Solution(BaseSolution):
 
         return sum
 
-    def part2_ex_answer(self) -> int:
-        return 2858
-
+    part2_ex_answer = 2858
     def part_two(self, input) -> int:
         disk: list = input
 

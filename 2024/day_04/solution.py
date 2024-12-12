@@ -2,8 +2,8 @@ from advent import BaseSolution
 
 
 class Solution(BaseSolution):
-    def part1_ex_answer(self) -> int:
-        return 18
+    
+    part1_ex_answer =  18
 
     def part_one(self, input) -> int:
         input = input.splitlines()
@@ -30,8 +30,7 @@ class Solution(BaseSolution):
 
         return sum
 
-    def part2_ex_answer(self) -> int:
-        return 9
+    part2_ex_answer = 9
 
     def part_two(self, input) -> int:
         input = input.splitlines()

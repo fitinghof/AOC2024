@@ -19,8 +19,7 @@ def has_loop(map, startpos):
     return False
 
 class Solution(BaseSolution):
-    def part1_ex_answer(self) -> int:
-        return 41
+    part1_ex_answer =  41
 
     def part_one(self, input) -> int:
         map = [list(i) for i in input.splitlines()]
@@ -45,8 +44,7 @@ class Solution(BaseSolution):
             sum += line.count("X")
         return sum
 
-    def part2_ex_answer(self) -> int:
-        return 6
+    part2_ex_answer =  6
 
     def part_two(self, input) -> int:
         map = [list(i) for i in input.splitlines()]

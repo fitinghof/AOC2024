@@ -15,8 +15,7 @@ class Solution(BaseSolution):
                     towers[lines[y][x]].append((y,x))
         return towers, lines, height, width
 
-    def part1_ex_answer(self) -> int:
-        return 14
+    part1_ex_answer = 14
 
     def part_one(self, input) -> int:
         towers, lines, height, width = input
@@ -44,8 +43,7 @@ class Solution(BaseSolution):
                             sum += 1
         return sum
 
-    def part2_ex_answer(self) -> int:
-        return 34
+    part2_ex_answer = 34
 
     def part_two(self, input) -> int:
         towers, lines, height, width = input

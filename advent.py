@@ -8,7 +8,9 @@ from pathlib import Path
 
 class BaseSolution:
     input: str
-
+    example_input: str
+    part1_ex_answer: int = 0
+    part2_ex_answer: int = 0
     def __init__(self, input: str, example_input: str):
         self.input = input
         self.example_input = example_input
@@ -16,14 +18,8 @@ class BaseSolution:
     def parse(self, input):
         return input
 
-    def part1_ex_answer(self) -> int:
-        return 0
-
     def part_one(self, input) -> int:
         raise NotImplementedError("Part one yet to be implemented")
-
-    def part2_ex_answer(self) -> int:
-        return 0
 
     def part_two(self, input) -> int:
         raise NotImplementedError("Part two yet to be implemented")
@@ -87,16 +83,16 @@ def main():
     solution: BaseSolution = module.Solution(input, example_input)
 
     ex_answer = solution.part_one(solution.parse(example_input))
-    if solution.part1_ex_answer() == ex_answer or len(example_input) == 0:
+    if solution.part1_ex_answer == ex_answer or len(example_input) == 0:
         print("Part 1:", solution.part_one(solution.parse(input)))
     else:
-        print(f"Part 1: Failed to get correct output using example input, you got {ex_answer}, correct: {solution.part1_ex_answer()}")
+        print(f"Part 1: Failed to get correct output using example input, you got {ex_answer}, correct: {solution.part1_ex_answer}")
 
     ex_answer = solution.part_two(solution.parse(example_input))
-    if solution.part2_ex_answer() == ex_answer or len(example_input) == 0:
+    if solution.part2_ex_answer == ex_answer or len(example_input) == 0:
         print("Part 2:", solution.part_two(solution.parse(input)))
     else:
-        print(f"Part 2: Failed to get correct output using example input, you got {ex_answer}, correct: {solution.part2_ex_answer()}")
+        print(f"Part 2: Failed to get correct output using example input, you got {ex_answer}, correct: {solution.part2_ex_answer}")
 
 if __name__ == "__main__":
     main()
