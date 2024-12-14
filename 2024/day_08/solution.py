@@ -3,6 +3,11 @@ from collections import defaultdict
 
 
 class Solution(BaseSolution):
+    def __init__(self, input: str, dayPath):
+        super().__init__(input, dayPath)
+        self.part1_tests([("example_input.txt", 14)])
+        self.part2_tests([("example_input.txt", 34)])
+
     def parse(self, input: str):
         #return [list(i) for i in input.splitlines()]
         towers = defaultdict(list)
@@ -14,8 +19,6 @@ class Solution(BaseSolution):
                 if lines[y][x] != ".":
                     towers[lines[y][x]].append((y,x))
         return towers, lines, height, width
-
-    part1_ex_answer = 14
 
     def part_one(self, input) -> int:
         towers, lines, height, width = input
@@ -42,8 +45,6 @@ class Solution(BaseSolution):
                             coveredPos.append((ypos, xpos))
                             sum += 1
         return sum
-
-    part2_ex_answer = 34
 
     def part_two(self, input) -> int:
         towers, lines, height, width = input

@@ -19,7 +19,10 @@ def has_loop(map, startpos):
     return False
 
 class Solution(BaseSolution):
-    part1_ex_answer =  41
+    def __init__(self, input: str, dayPath):
+        super().__init__(input, dayPath)
+        self.part1_tests([("example_input.txt", 41)])
+        self.part2_tests([("example_input.txt", 6)])
 
     def part_one(self, input) -> int:
         map = [list(i) for i in input.splitlines()]
@@ -43,8 +46,6 @@ class Solution(BaseSolution):
         for line in map:
             sum += line.count("X")
         return sum
-
-    part2_ex_answer =  6
 
     def part_two(self, input) -> int:
         map = [list(i) for i in input.splitlines()]

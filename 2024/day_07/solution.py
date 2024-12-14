@@ -19,6 +19,11 @@ def has_solution(list, operations, operation = add, sum = 0, startIndex = 1):
     return 0
 
 class Solution(BaseSolution):
+    def __init__(self, input: str, dayPath):
+        super().__init__(input, dayPath)
+        self.part1_tests([("example_input.txt", 3749)])
+        self.part2_tests([("example_input.txt", 11387)])
+
     def parse(self, input):
         data = []
         for line in input.splitlines():
@@ -27,12 +32,8 @@ class Solution(BaseSolution):
             data.append([int(i) for i in parsedLine])
         return data
 
-    part1_ex_answer = 3749
-
     def part_one(self, input) -> int:
         return sum(has_solution(line, [add, mul]) for line in input)
-
-    part2_ex_answer =  11387
 
     def part_two(self, input) -> int:
         return sum(has_solution(line, [add, mul, cat]) for line in input)

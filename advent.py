@@ -5,18 +5,38 @@ from types import ModuleType
 from typing import Callable, Optional
 from pathlib import Path
 
-
 class BaseSolution:
     input: str
-    example_input: str
-    part1_ex_answer: int = 0
-    part2_ex_answer: int = 0
-    def __init__(self, input: str, example_input: str):
+    dayPath: Path
+    part1_test: list[tuple[str, int]] = []
+    part2_test: list[tuple[str, int]] = []
+
+    def __init__(self, input: str, dayPath):
+        self.dayPath = dayPath
         self.input = input
-        self.example_input = example_input
 
     def parse(self, input):
         return input
+
+    def part1_tests(self, tests: list[tuple[str, int]]):
+        self.part1_test = tests[:]
+
+    def part2_tests(self, tests: list[tuple[str, int]]):
+        self.part2_test = tests[:]
+
+    def test(self, func, tests):
+        for test in tests:
+            try:
+                with open(self.dayPath / test[0], "r") as f:
+                    input = f.read()
+                    if len(input) == 0: print(f"---WARNING--- test: {test[0]} has no data")
+                    if (answer := func(self.parse(input))) != test[1]:
+                        print(f"test {test[0]} failed, got: {answer}, expected: {test[1]}")
+                        return False
+            except:
+                print(f"---WARNING--- failed to run test: {test[0]}")
+                return False
+        return True
 
     def part_one(self, input) -> int:
         raise NotImplementedError("Part one yet to be implemented")
@@ -65,34 +85,24 @@ def main():
 
     module: ModuleType = import_module(module_name)
     input: str = ""
-    example_input: str = ""
+
 
     try:
         with open(input_path, "r") as f:
             input = f.read()
-        with open(example_input_path, "r") as f:
-            example_input = f.read()
     except FileNotFoundError:
         print(f"[ERR] Could not open puzzle input [{input_path} or {example_input_path} or both]")
-
-    if len(example_input) == 0:
-        print("WARNING No example input")
     if len(input) == 0:
         print("WARNING No input")
 
-    solution: BaseSolution = module.Solution(input, example_input)
+    solution: BaseSolution = module.Solution(input, day_path)
 
-    ex_answer = solution.part_one(solution.parse(example_input))
-    if solution.part1_ex_answer == ex_answer or len(example_input) == 0:
-        print("Part 1:", solution.part_one(solution.parse(input)))
-    else:
-        print(f"Part 1: Failed to get correct output using example input, you got {ex_answer}, correct: {solution.part1_ex_answer}")
+    if solution.test(solution.part_one, solution.part1_test):
+        print(f"Part 1: {solution.part_one(solution.parse(input))}")
+    if solution.test(solution.part_two, solution.part2_test):
+        print(f"Part 1: {solution.part_two(solution.parse(input))}")
 
-    ex_answer = solution.part_two(solution.parse(example_input))
-    if solution.part2_ex_answer == ex_answer or len(example_input) == 0:
-        print("Part 2:", solution.part_two(solution.parse(input)))
-    else:
-        print(f"Part 2: Failed to get correct output using example input, you got {ex_answer}, correct: {solution.part2_ex_answer}")
+
 
 if __name__ == "__main__":
     main()

@@ -12,13 +12,16 @@ def evaluate_trailhead(list: list[list[int]], y: int, x: int, black_list: set | 
     return sum(evaluate_trailhead(list, y, x, black_list, step + 1) for y, x in [(y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)])
 
 class Solution(BaseSolution):
+    def __init__(self, input: str, dayPath):
+        super().__init__(input, dayPath)
+        self.part1_tests([("example_input.txt", 36)])
+        self.part2_tests([("example_input.txt", 81)])
+
     def parse(self, input: str):
         return [[int(e) for e in row] for row in input.splitlines()]
 
-    part1_ex_answer = 36
     def part_one(self, input) -> int:
         return sum(evaluate_trailhead(input, y, x, set()) for x in range(len(input[0])) for y in range(len(input)))
 
-    part2_ex_answer = 81
     def part_two(self, input) -> int:
         return sum(evaluate_trailhead(input, y, x, None) for x in range(len(input[0])) for y in range(len(input)))

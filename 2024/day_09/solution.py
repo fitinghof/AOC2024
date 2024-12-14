@@ -2,6 +2,11 @@ from advent import BaseSolution
 
 
 class Solution(BaseSolution):
+    def __init__(self, input: str, dayPath):
+        super().__init__(input, dayPath)
+        self.part1_tests([("example_input.txt", 1928)])
+        self.part2_tests([("example_input.txt", 2858)])
+
     def parse(self, input) -> list[int]:
         disk: list = []
         free = False
@@ -15,7 +20,6 @@ class Solution(BaseSolution):
             free = not free
         return disk
 
-    part1_ex_answer = 1928
     def part_one(self, input) -> int:
         disk: list = input
 
@@ -35,7 +39,6 @@ class Solution(BaseSolution):
 
         return sum
 
-    part2_ex_answer = 2858
     def part_two(self, input) -> int:
         disk: list = input
 

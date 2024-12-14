@@ -34,7 +34,7 @@ def counter(input, y, x, altered):
     xfences = defaultdict(list)
     flowers = floodFill2(input, y, x, input[y][x], altered, yfences, xfences)
     fences = 0
-    for key, fenceRow in chain(yfences.items(), xfences.items()):
+    for fenceRow in chain(yfences.values(), xfences.values()):
         fenceRow.sort()
         for i in range(1,len(fenceRow)):
             if (fenceRow[i - 1] + 1) != fenceRow[i]:
@@ -44,11 +44,14 @@ def counter(input, y, x, altered):
 
 
 class Solution(BaseSolution):
+    def __init__(self, input: str, dayPath):
+        super().__init__(input, dayPath)
+        self.part1_tests([])
+        self.part2_tests([])
     # The output of parse will be passed as input for part_one and part_two
     def parse(self, input: str):
         return [[str(i) for i in j] for j in input.splitlines()]
 
-    part1_ex_answer = 1930
     def part_one(self, input) -> int:
         totalPlotValue = 0
         altered: list = [[None for _ in range(len(i))] for i in input]
@@ -59,7 +62,6 @@ class Solution(BaseSolution):
                     totalPlotValue += flowers * fences
         return totalPlotValue
 
-    part2_ex_answer = 1206
     def part_two(self, input) -> int:
         totalPlotValue = 0
         altered: list = [[None for _ in range(len(i))] for i in input]
