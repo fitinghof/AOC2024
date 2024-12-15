@@ -20,8 +20,8 @@ class Solution(BaseSolution):
     def parse(self, input: str):
         return [[int(e) for e in row] for row in input.splitlines()]
 
-    def part_one(self, input) -> int:
+    def part_one(self, input, rawInput) -> int:
         return sum(evaluate_trailhead(input, y, x, set()) for x in range(len(input[0])) for y in range(len(input)))
 
-    def part_two(self, input) -> int:
+    def part_two(self, input, rawInput) -> int:
         return sum(evaluate_trailhead(input, y, x, None) for x in range(len(input[0])) for y in range(len(input)))

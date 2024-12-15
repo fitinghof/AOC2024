@@ -24,7 +24,7 @@ class Solution(BaseSolution):
         self.part1_tests([("example_input.txt", 41)])
         self.part2_tests([("example_input.txt", 6)])
 
-    def part_one(self, input) -> int:
+    def part_one(self, input, rawInput) -> int:
         map = [list(i) for i in input.splitlines()]
         pos = [0, 0]
         mapHeight = len(map)
@@ -47,7 +47,7 @@ class Solution(BaseSolution):
             sum += line.count("X")
         return sum
 
-    def part_two(self, input) -> int:
+    def part_two(self, input, rawInput) -> int:
         map = [list(i) for i in input.splitlines()]
         startpos = [0, 0]
         mapHeight = len(map)

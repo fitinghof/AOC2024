@@ -52,7 +52,7 @@ class Solution(BaseSolution):
     def parse(self, input: str):
         return [[str(i) for i in j] for j in input.splitlines()]
 
-    def part_one(self, input) -> int:
+    def part_one(self, input, rawInput) -> int:
         totalPlotValue = 0
         altered: list = [[None for _ in range(len(i))] for i in input]
         for y in range(len(input)):
@@ -62,7 +62,7 @@ class Solution(BaseSolution):
                     totalPlotValue += flowers * fences
         return totalPlotValue
 
-    def part_two(self, input) -> int:
+    def part_two(self, input, rawInput) -> int:
         totalPlotValue = 0
         altered: list = [[None for _ in range(len(i))] for i in input]
         for y in range(len(input)):

@@ -32,8 +32,8 @@ class Solution(BaseSolution):
             data.append([int(i) for i in parsedLine])
         return data
 
-    def part_one(self, input) -> int:
+    def part_one(self, input, rawInput) -> int:
         return sum(has_solution(line, [add, mul]) for line in input)
 
-    def part_two(self, input) -> int:
+    def part_two(self, input, rawInput) -> int:
         return sum(has_solution(line, [add, mul, cat]) for line in input)

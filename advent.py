@@ -25,23 +25,26 @@ class BaseSolution:
         self.part2_test = tests[:]
 
     def test(self, func, tests):
+        success = True
         for test in tests:
             try:
-                with open(self.dayPath / test[0], "r") as f:
-                    input = f.read()
-                    if len(input) == 0: print(f"---WARNING--- test: {test[0]} has no data")
-                    if (answer := func(self.parse(input))) != test[1]:
-                        print(f"test {test[0]} failed, got: {answer}, expected: {test[1]}")
-                        return False
+                f = open(self.dayPath / test[0], "r")
             except:
                 print(f"---WARNING--- failed to run test: {test[0]}")
-                return False
-        return True
+            else:
+                input = f.read()
+                f.close()
+                success = True
+                if len(input) == 0: print(f"---WARNING--- test: {test[0]} has no data")
+                if (answer := func(self.parse(input), input)) != test[1]:
+                    print(f"test {test[0]} failed, got: {answer}, expected: {test[1]}")
+                    success = False
+        return success
 
-    def part_one(self, input) -> int:
+    def part_one(self, input, rawInput) -> int:
         raise NotImplementedError("Part one yet to be implemented")
 
-    def part_two(self, input) -> int:
+    def part_two(self, input, rawInput) -> int:
         raise NotImplementedError("Part two yet to be implemented")
 
 
@@ -98,9 +101,9 @@ def main():
     solution: BaseSolution = module.Solution(input, day_path)
 
     if solution.test(solution.part_one, solution.part1_test):
-        print(f"Part 1: {solution.part_one(solution.parse(input))}")
+        print(f"Part 1: {solution.part_one(solution.parse(input), input)}")
     if solution.test(solution.part_two, solution.part2_test):
-        print(f"Part 1: {solution.part_two(solution.parse(input))}")
+        print(f"Part 2: {solution.part_two(solution.parse(input), input)}")
 
 
 

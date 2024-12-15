@@ -2,10 +2,10 @@ from advent import BaseSolution
 
 
 class Solution(BaseSolution):
-    
+
     part1_ex_answer =  18
 
-    def part_one(self, input) -> int:
+    def part_one(self, input, rawInput) -> int:
         input = input.splitlines()
         searchedWords = "XMAS", "SAMX"
         lineLength = len(input[0])
@@ -32,7 +32,7 @@ class Solution(BaseSolution):
 
     part2_ex_answer = 9
 
-    def part_two(self, input) -> int:
+    def part_two(self, input, rawInput) -> int:
         input = input.splitlines()
         searchedWords = "MAS", "SAM"
         lineLength = len(input[0])

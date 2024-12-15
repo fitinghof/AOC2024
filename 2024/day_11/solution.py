@@ -27,9 +27,9 @@ class Solution(BaseSolution):
         return stones
 
     part1_ex_answer = 55312
-    def part_one(self, input) -> int:
+    def part_one(self, input, rawInput) -> int:
         return solve(input, 25)
 
     part2_ex_answer = 65601038650482
-    def part_two(self, input) -> int:
+    def part_two(self, input, rawInput) -> int:
         return solve(input, 75)

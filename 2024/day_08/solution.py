@@ -20,7 +20,7 @@ class Solution(BaseSolution):
                     towers[lines[y][x]].append((y,x))
         return towers, lines, height, width
 
-    def part_one(self, input) -> int:
+    def part_one(self, input, rawInput) -> int:
         towers, lines, height, width = input
         sum = 0
         for freq in towers.values():
@@ -46,7 +46,7 @@ class Solution(BaseSolution):
                             sum += 1
         return sum
 
-    def part_two(self, input) -> int:
+    def part_two(self, input, rawInput) -> int:
         towers, lines, height, width = input
         for freq in towers.values():
             for i in range(len(freq)):

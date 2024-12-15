@@ -2,7 +2,7 @@ from advent import BaseSolution
 
 
 class Solution(BaseSolution):
-    def part_one(self, input) -> int:
+    def part_one(self, input, rawInput) -> int:
         result: int = 0
         mulIndex: int = 0
         while mulIndex < len(input):
@@ -32,7 +32,7 @@ class Solution(BaseSolution):
 
 
 
-    def part_two(self, input) -> int:
+    def part_two(self, input, rawInput) -> int:
         result: int = 0
         mulIndex: int = 0
         do: bool = True

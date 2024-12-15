@@ -8,7 +8,7 @@ class Solution(BaseSolution):
             outPut.append([int(j) for j in i.split()])
         return outPut
 
-    def part_one(self, input) -> int:
+    def part_one(self, input, rawInput) -> int:
         leftList: list = []
         rightList: list = []
         for line in input:
@@ -19,7 +19,7 @@ class Solution(BaseSolution):
 
         return sum(abs(left - right) for left, right in zip(leftList, rightList))
 
-    def part_two(self, input) -> int:
+    def part_two(self, input, rawInput) -> int:
         sum: int = 0
         leftList: list = []
         rightDict: dict = {}

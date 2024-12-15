@@ -30,7 +30,7 @@ class Solution(BaseSolution):
         return output
 
     part1_ex_answer = 480
-    def part_one(self, input) -> int:
+    def part_one(self, input, rawInput) -> int:
         for game in input:
             x = game[0][0] + game[1][0]
             y = game[0][1] + game[1][1]
@@ -41,5 +41,5 @@ class Solution(BaseSolution):
         return 0
 
     part2_ex_answer = 0
-    def part_two(self, input) -> int:
+    def part_two(self, input, rawInput) -> int:
         return 0

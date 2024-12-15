@@ -4,7 +4,7 @@ from functools import cmp_to_key
 
 
 class Solution(BaseSolution):
-    def part_one(self, input) -> int:
+    def part_one(self, input, rawInput) -> int:
         lines = input.splitlines()
         index = 0
         orderMap = defaultdict(list)
@@ -33,7 +33,7 @@ class Solution(BaseSolution):
 
         return sum
 
-    def part_two(self, input) -> int:
+    def part_two(self, input, rawInput) -> int:
         lines = input.splitlines()
         index = 0
         orderMap = defaultdict(list)

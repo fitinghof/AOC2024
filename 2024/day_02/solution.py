@@ -42,14 +42,14 @@ def lineIsSafe2(line: list[str]) -> bool:
 
 
 class Solution(BaseSolution):
-    def part_one(self, input) -> int:
+    def part_one(self, input, rawInput) -> int:
         safeReports: int = 0
         for line in input.splitlines():
             if lineIsSafe(line):
                 safeReports += 1
         return safeReports
 
-    def part_two(self, input) -> int:
+    def part_two(self, input, rawInput) -> int:
         safeReports: int = 0
         for line in input.splitlines():
             nums = line.split()

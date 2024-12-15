@@ -20,7 +20,7 @@ class Solution(BaseSolution):
             free = not free
         return disk
 
-    def part_one(self, input) -> int:
+    def part_one(self, input, rawInput) -> int:
         disk: list = input
 
         firstFree = disk.index(None)
@@ -39,7 +39,7 @@ class Solution(BaseSolution):
 
         return sum
 
-    def part_two(self, input) -> int:
+    def part_two(self, input, rawInput) -> int:
         disk: list = input
 
         fileIndex = len(disk) - 1
